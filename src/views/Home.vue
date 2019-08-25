@@ -1,62 +1,42 @@
 <template>
   <div class="home">
-    <el-form
-      :model="form"
-      :rules="rules"
-      inline
-      size="small"
-      ref="form"
-    >
-      <el-form-item
-        label="能量"
-        prop="energy"
-      >
-        <el-input-number
-          v-model="form.energy"
-          clearable
-          :controls="false"
-          placeholder="请输入当前能量"
-        ></el-input-number>
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          type="primary"
-          @click="submit"
-        >提交</el-button>
-      </el-form-item>
-    </el-form>
     <el-table
       :data="data"
       :loading="loading"
       width="100%"
+      size="small"
       stripe
       border
     >
-      <el-table-column
+      <!-- <el-table-column
         label="序号"
         type="index"
-      ></el-table-column>
+      ></el-table-column> -->
       <el-table-column
+        align="center"
         prop="recordDate"
         label="记录日期"
       ></el-table-column>
       <el-table-column
+        align="center"
         prop="currentEnergy"
         label="当前能量"
       ></el-table-column>
       <el-table-column
+        align="center"
         prop="todayRevenue"
         label="今日营收"
       ></el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="totalRevenue"
         label="营收累计"
-      ></el-table-column>
+      ></el-table-column> -->
       <el-table-column
+        align="center"
         prop="average"
         label="近期平均"
       ></el-table-column>
-      <el-table-column>
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
             type="warning"
@@ -65,6 +45,33 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="energy-form">
+      <el-form
+        :model="form"
+        :rules="rules"
+        inline
+        size="small"
+        ref="form"
+      >
+        <el-form-item
+          label="能量"
+          prop="energy"
+        >
+          <el-input-number
+            v-model="form.energy"
+            clearable
+            :controls="false"
+            placeholder="请输入当前能量"
+          ></el-input-number>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            type="primary"
+            @click="submit"
+          >提交</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
@@ -185,3 +192,14 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.energy-form {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  .el-form-item--small.el-form-item {
+    margin-bottom: 10px;
+  }
+}
+</style>
