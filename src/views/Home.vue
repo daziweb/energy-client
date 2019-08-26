@@ -1,50 +1,56 @@
 <template>
   <div class="home">
-    <el-table
-      :data="data"
-      :loading="loading"
-      width="100%"
-      size="small"
-      stripe
-      border
-    >
-      <!-- <el-table-column
+    <div class="energy-table">
+      <el-table
+        :data="data"
+        :loading="loading"
+        width="100%"
+        size="small"
+        stripe
+        border
+      >
+        <!-- <el-table-column
         label="序号"
         type="index"
       ></el-table-column> -->
-      <el-table-column
-        align="center"
-        prop="recordDate"
-        label="记录日期"
-      ></el-table-column>
-      <el-table-column
-        align="center"
-        prop="currentEnergy"
-        label="当前能量"
-      ></el-table-column>
-      <el-table-column
-        align="center"
-        prop="todayRevenue"
-        label="今日营收"
-      ></el-table-column>
-      <!-- <el-table-column
+        <el-table-column
+          align="center"
+          prop="recordDate"
+          label="日期"
+        ></el-table-column>
+        <el-table-column
+          align="center"
+          prop="currentEnergy"
+          label="能量"
+        ></el-table-column>
+        <el-table-column
+          align="center"
+          prop="todayRevenue"
+          label="营收"
+        ></el-table-column>
+        <!-- <el-table-column
         prop="totalRevenue"
         label="营收累计"
       ></el-table-column> -->
-      <el-table-column
-        align="center"
-        prop="average"
-        label="近期平均"
-      ></el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button
-            type="warning"
-            @click="deleteData(scope.row)"
-          >删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+        <el-table-column
+          align="center"
+          prop="average"
+          label="平均"
+        ></el-table-column>
+        <!-- <el-table-column
+          align="center"
+          label="操作"
+        >
+          <template slot-scope="scope">
+            <el-button
+              type="text"
+              size="small"
+              @click="deleteData(scope.row)"
+            >删除</el-button>
+          </template>
+        </el-table-column> -->
+      </el-table>
+    </div>
     <div class="energy-form">
       <el-form
         :model="form"
@@ -188,18 +194,20 @@ export default {
   },
   mounted () {
     this.getList()
-    // this.getOne()
   }
 }
 </script>
 <style lang="less">
+.energy-table {
+  height: calc(100vh - 70px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 .energy-form {
   position: fixed;
   left: 0;
   bottom: 0;
+  padding-top: 10px;
   width: 100%;
-  .el-form-item--small.el-form-item {
-    margin-bottom: 10px;
-  }
 }
 </style>
