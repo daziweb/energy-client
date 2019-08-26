@@ -6,8 +6,8 @@
         :loading="loading"
         width="100%"
         size="small"
-        stripe
         border
+        :row-class-name="tableRowClassName"
       >
         <!-- <el-table-column
         label="序号"
@@ -129,6 +129,14 @@ export default {
         }
       })
     },
+    tableRowClassName ({ row, rowIndex }) {
+      if (rowIndex === 1) {
+        return 'warning-row'
+      } else if (rowIndex === 3) {
+        return 'success-row'
+      }
+      return ''
+    },
     deleteData (row) {
       this.axios.post('energy/delete', { id: row.id })
         .then(response => {
@@ -209,5 +217,12 @@ export default {
   bottom: 0;
   padding-top: 10px;
   width: 100%;
+}
+.el-table .warning-row {
+  background: oldlace;
+}
+
+.el-table .success-row {
+  background: #f0f9eb;
 }
 </style>
