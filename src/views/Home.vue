@@ -130,12 +130,13 @@ export default {
       })
     },
     tableRowClassName ({ row, rowIndex }) {
-      if (rowIndex === 1) {
-        return 'warning-row'
-      } else if (rowIndex === 3) {
+      if (rowIndex % 2 === 0) {
+        return ''
+      } else if (rowIndex % 4 === 1) {
         return 'success-row'
+      } else {
+        return 'warning-row'
       }
-      return ''
     },
     deleteData (row) {
       this.axios.post('energy/delete', { id: row.id })
